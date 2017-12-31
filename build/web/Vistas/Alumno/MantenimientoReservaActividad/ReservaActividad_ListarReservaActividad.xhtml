@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAlumno.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Mantenimiento Reserva Actividad" footer="VrammDev" style="margin: auto; width: 880px">
+                <h:form>
+                    <h:outputText value="#{reservaactividad.mensaje}"/>
+                    <p style="text-align: center">
+                        <p:commandButton value="AGREGAR RESERVA ACTIVIDAD" action="GrabarReservaActividad" />
+                    </p>
+                    <p:dataTable value="#{reservaactividad.lista}" var="ra">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"></h:outputText>
+                            </f:facet>
+                            <p style="text-align: center">
+                                <h:outputText value="#{ra.idReservaActividad}"></h:outputText>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DIA"></h:outputText>
+                            </f:facet>
+                            <p style="text-align: center">
+                                <h:outputText value="#{ra.dia}"></h:outputText>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="HORA"></h:outputText>
+                            </f:facet>
+                            <p style="text-align: center">
+                                <h:outputText value="#{ra.hora}"></h:outputText>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ALUMNO"></h:outputText>
+                            </f:facet>
+                            <p style="text-align: center">
+                                <h:outputText value="#{ra.alumno.nombre}"></h:outputText>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ACTIVIDAD"></h:outputText>
+                            </f:facet>
+                            <p style="text-align: center">
+                                <h:outputText value="#{ra.actividad.nombre}"></h:outputText>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <p style="text-align: center">
+                                <h:commandButton value="Modificar" action="ModificarReservaActividad" actionListener="#{reservaactividad.CapturarCodigo}">
+                                    <f:attribute name="iduser" value="#{ra.idReservaActividad}"/>
+                                </h:commandButton>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <p style="text-align: center">
+                                <h:commandButton value="Eliminar" action="ListaReservaActividad" actionListener="#{reservaactividad.EliminarReservaActividad}">
+                                    <f:attribute name="iduser" value="#{ra.idReservaActividad}"/>
+                                </h:commandButton>
+                            </p>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <center>
+        <p:panel header="Modificar Anuncio" footer="JKVL" style="margin: auto; width: 580px">
+        <h:form>
+            <h:panelGrid columns="3" style="margin: auto">
+                    <h:outputText value="Codigo:"/>
+                    <p:inputText value="#{anuncio.idanuncio}" id="codigo" required="true" requiredMessage="Ingrese Codigo"/>
+                    <h:message for="codigo"/>
+                    <h:outputText value="Anuncio:"/>
+                    <p:inputText value="#{anuncio.nombre}" id="nombre" required="true" requiredMessage="Ingrese Nombre"/>
+                    <h:message for="nombre"/>
+                    <h:outputText value="horario:"/>
+                    <p:selectOneMenu value="#{anuncio.idhorario}" id="ejemplares" required="true" requiredMessage="Ingrese Nombre">
+                                <f:selectItem itemLabel="seleccione" itemValue="0" />
+                                <f:selectItems value="#{horario.listaItem}"/>
+                    </p:selectOneMenu>
+                    <h:message for="ejemplares"/>
+            </h:panelGrid>
+            <p style="text-align: center">
+                <p:commandButton value="Modificar" action="ListaAnuncio" actionListener="#{anuncio.ModificarActividad}" type="submit" ajax="false" />
+            </p>
+            <p style="text-align: center">
+                <p:commandButton value="Regresar" action="ListaAnuncio"/>
+            </p>
+            
+        </h:form>
+        </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

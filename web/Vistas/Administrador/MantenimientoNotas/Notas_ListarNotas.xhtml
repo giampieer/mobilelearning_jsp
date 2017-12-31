@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"        
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Mantenimiento Notas" footer="VrammDev" style="margin: auto; width: 780px">
+            <h:form>
+                <p style="text-align: center">
+                        <p:commandButton value="AGREGAR NOTAS" action="GRABARNOTA"/>
+                </p>
+                <p:dataTable value="#{nota.lista}" var="n">
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="ID"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{n.idnotas}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Nota"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{n.nota}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Tipo Nota"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{n.tiponota}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Codigo Matricula"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{n.matriculaHasCurso.matriculaHasCursoPK.matriculaIdmatricula}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Codigo Curso"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{n.matriculaHasCurso.matriculaHasCursoPK.cursoIdcurso}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <p style="text-align: center">
+                            <h:commandButton value="Modificar" action="MODIFICARNOTA" actionListener="#{nota.CargarNota}">
+                                <f:attribute name="idnotas" value="#{n.idnotas}"/>
+                            </h:commandButton>
+                        </p>
+                    </p:column>
+                    <p:column>
+                        <p style="text-align: center">
+                            <h:commandButton value="Eliminar" action="LISTADONOTA" actionListener="#{nota.EliminarNota}">
+                                <f:attribute name="idnotas" value="#{n.idnotas}"/>
+                            </h:commandButton>
+                        </p>
+                    </p:column>
+                </p:dataTable>
+                <h:outputText value="#{nota.mensaje}"></h:outputText>
+            </h:form>
+          </p:panel>      
+        </center>
+    </ui:define>
+</ui:composition>

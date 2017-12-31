@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Mantenimiento Matricula" footer="JKVL" style="margin: auto; width: 1280px">
+                <h:form>
+                    <center><h:outputText value="#{matricula.mensaje}"/></center>
+                    <center><h:outputText value="#{matricula.cod}"/></center>
+                    <p style="text-align: center">
+                        <p:commandButton value="AGREGAR MATRICULA" action="GrabarMatricula" actionListener="#{matricula.Codigo}">
+                            <f:param name="iduser" value="#{matricula.cod}"/>
+                        </p:commandButton>
+                    </p>
+                    <p:dataTable value="#{matricula.lista}" var="u">
+                        <p:column>
+                            <f:facet name="header">
+                               <h:outputText value="ID"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.idmatricula}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               <h:outputText value="CICLO"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.ciclo}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               <h:outputText value="SECCION"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.seccion}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               <h:outputText value="ADMINISTRADOR"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.administrador.nombre}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               <h:outputText value="ALUMNO"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.alumno.nombre}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               <h:outputText value="Pago"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.pagos.nombrepago}"></h:outputText>
+                        </p:column>
+                        
+                        <p:column>
+                            <p style="text-align: center">
+                                <h:commandButton value="Modificar" action="ModificarMatricula" actionListener="#{matricula.CapturarMatricula}">
+                                    <f:attribute name="iduser" value="#{u.idmatricula}"/>
+                                    <f:param name="idadmin" value="#{matricula.cod}"/>
+                                </h:commandButton>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <p style="text-align: center">
+                                <h:commandButton value="Eliminar" action="ListaMatricula" actionListener="#{matricula.EliminarMatricula}">
+                                    <f:attribute name="iduser" value="#{u.idmatricula}"/>
+                                    <f:param name="idadmin" value="#{matricula.cod}"/>
+                                </h:commandButton>
+                            </p>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

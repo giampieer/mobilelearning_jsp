@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="110" resizable="true" closable="true" collapsible="true">
+                    <h2 style="text-align: center">Campus virtual</h2>
+                    <h:form><center><h:outputText value="#{LoginUsuario.mensaje}"/></center></h:form>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
+                    <center>Realizado por VrammDev</center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="210" header="Menu" collapsible="true">
+                    <h:form>
+                        <p:panelMenu>
+                            <p:submenu label="Reservas">
+                                <p:menuitem value="Actividades" action="ListaReservaActividad" />
+                                <p:menuitem value="Laboratorios" action="ListaReservaLaboratorio" />
+                                <p:menuitem value="Libros" action="ListaReservaLibro" />                              
+
+                            </p:submenu>
+                            <p:submenu label="Vistas">
+                                <p:menuitem value="Anuncio" action="ListaAnuncio" />
+                                <p:menuitem value="Asistencia" action="LISTADOASISTENCIA" />
+                                <p:menuitem value="Curso" action="LISTADOCURSO" />
+                                <p:menuitem value="Horario" action="ListaHorario" />
+                                <p:menuitem value="Notas" action="LISTADONOTA" />
+                                <p:menuitem value="Pago" action="ListaPago" />
+                                <p:menuitem value="Recurso" action="ListaRecurso" />
+                            </p:submenu>
+                            <p:submenu label="Ajustes">
+                                <p:menuitem value="Modificar Clave" action="MODIFICARCLAVE" />
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
+                    <h:form>
+                        <p:commandButton value="Cerrar Sesión" style="left:14px" action="LOGIN" icon="ui-icon-extlink" />
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="content">
+                        
+                    </ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>

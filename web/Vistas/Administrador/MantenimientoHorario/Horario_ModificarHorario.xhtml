@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <center>
+        <p:panel header="Modificar Horario" footer="JKVL" style="margin: auto; width: 580px">
+        <h:form>
+            <h:panelGrid columns="3" style="margin: auto">
+                    <h:outputText value="Codigo:"/>
+                    <p:inputText value="#{horario.idhorario}" id="codigo" required="true" requiredMessage="Ingrese Codigo"/>
+                    <h:message for="codigo"/>
+                    <h:outputText value="Fecha Inicio:"/>
+                    <p:inputText value="#{horario.fechainicio}" id="ciclo" required="true" requiredMessage="Ingrese Nombre"/>
+                    <h:message for="ciclo"/>
+                    <h:outputText value="Fecha Fin:"/>
+                    <p:inputText value="#{horario.fechafin}" id="dia" required="true" requiredMessage="Ingrese Apellido"/>
+                    <h:message for="dia"/>
+                    <h:outputText value="Hora Inicio:"/>
+                    <p:inputText value="#{horario.horainicio}" id="horainicio" required="true" requiredMessage="Ingrese Sexo"/>
+                    <h:message for="horainicio"/>
+                    <h:outputText value="Hora fin:"/>
+                    <p:inputText value="#{horario.horafin}" id="horafin" required="true" requiredMessage="Ingrese Sexo"/>
+                    <h:message for="horafin"/>
+                    <h:outputText value="profesor:"/>
+                    <p:inputText value="#{horario.idprofesor}" id="idprofesor" required="true" requiredMessage="Ingrese edad"/>
+                    <h:message for="idprofesor"/>
+                    <h:outputText value="Curso:"/>
+                    <p:inputText value="#{horario.idcurso}" id="idcurso" required="true" requiredMessage="Ingrese edad"/>
+                    <h:message for="idcurso"/>
+            </h:panelGrid>
+            <p style="text-align: center">
+                <p:commandButton value="Modificar" action="ListaHorario" actionListener="#{horario.ModificarHorario}" type="submit" ajax="false" />
+            </p>
+        </h:form>
+            <h:form>
+                <p style="text-align: center">
+                    <p:commandButton value="Regresar" action="ListaHorario"/>
+                </p>
+            </h:form>
+        </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

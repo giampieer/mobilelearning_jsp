@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <center>
+        <p:panel header="Agregar Alumno" footer="JKVL" style="margin: auto; width: 580px">
+        <h:form>
+            <h:panelGrid columns="3" style="margin: auto">
+                    <h:outputText value="Codigo:"/>
+                    <p:inputText value="#{matricula.idmatricula}" id="codigo" required="true" requiredMessage="Ingrese Codigo"/>
+                    <h:message for="codigo"/>
+                    <h:outputText value="Ciclo:"/>
+                    <p:inputText value="#{matricula.ciclo}" id="nombre" required="true" requiredMessage="Ingrese Ciclo"/>
+                    <h:message for="nombre"/>
+                    <h:outputText value="Seccion:"/>
+                    <p:inputText value="#{matricula.seccion}" id="apellido" required="true" requiredMessage="Ingrese Seccion"/>
+                    <h:message for="apellido"/>
+                    <h:outputText value=""/>
+                    <p:inputText value="#{matricula.idadministrador}" type="hidden" id="administrador" required="true" requiredMessage="Ingrese Codigo"/>
+                    <h:message for="administrador"/>
+                    
+                    <h:outputText value="Alumno:"/>
+                    <p:selectOneMenu value="#{matricula.idalumno}" id="alumno" required="true" requiredMessage="Seleccione Alumno">
+                            <f:selectItem itemLabel="SELECCIONE"/>
+                            <f:selectItems value="#{alumno.listaItem}"/>
+                    </p:selectOneMenu>
+                    <h:message for="alumno"/>
+                    
+                    <h:outputText value="Pago:"/>
+                    <p:selectOneMenu value="#{matricula.idpago}" id="pago" required="true" requiredMessage="Seleccione Pago">
+                            <f:selectItem itemLabel="SELECCIONE"/>
+                            <f:selectItems value="#{pagos.listaitem}"/>
+                    </p:selectOneMenu>
+                    <h:message for="pago"/>
+            </h:panelGrid>
+            <p style="text-align: center">
+                <p:commandButton value="Grabar" action="ListaMatricula" actionListener="#{matricula.ModificarMatricula}" type="submit" ajax="false">
+                    <f:param name="idadmin" value="#{matricula.idadministrador}"/>
+                </p:commandButton>
+            </p>
+            
+            
+        </h:form>
+            <h:form>
+                <p style="text-align: center">
+                    <p:commandButton value="Regresar" action="ListaMatricula" actionListener="#{matricula.Codigo}">
+                        <f:param name="iduser" value="#{matricula.idadministrador}"/>
+                    </p:commandButton>
+                </p>
+            </h:form>
+        </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

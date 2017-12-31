@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAlumno.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"  
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Grabar Reserva Libro" footer="VrammDev" style="margin: auto; width: 580px">
+                <h:form>
+                    <h:panelGrid columns="3" style="margin: auto">
+                        <h:outputText value="Codigo:"/>
+                        <p:inputText value="#{ReservaLibro.id}" id="codigo" required="true" requiredMessage="Ingrese Codigo"/>
+                        <h:message for="codigo"/>
+                        <h:outputText value="Fecha Entrega:"/>
+                        <p:inputText value="#{ReservaLibro.fechaentrega}" id="fecha_ent" required="true" requiredMessage="Ingrese Fecha de Entrega"/>
+                        <h:message for="fecha_ent"/>
+                        <h:outputText value="Fecha Devolucion:"/>
+                        <p:inputText value="#{ReservaLibro.fechadevolucion}" id="fecha_dev" required="true" requiredMessage="Ingrese Fecha de Devolucion"/>
+                        <h:message for="fecha_dev"/>
+                        <h:outputText value="Alumno:"/>
+                        <p:selectOneMenu value="#{ReservaLibro.idalumno}" id="alumno" required="true" requiredMessage="Seleccione Alumno">
+                                <f:selectItem itemLabel="seleccione"/>
+                                <f:selectItems value="#{alumno.listaItem}"/>
+                        </p:selectOneMenu>
+                        <h:message for="alumno"/>
+                        <h:outputText value="Libro:"/>
+                        <p:selectOneMenu value="#{ReservaLibro.idLibro}" id="libro" required="true" requiredMessage="Seleccione Libro">
+                                <f:selectItem itemLabel="seleccione"/>
+                                <f:selectItems value="#{libro.listaItem}"/>
+                        </p:selectOneMenu>
+                        <h:message for="libro"/>
+
+                    </h:panelGrid>
+                    <p style="text-align: center">
+                        <p:commandButton value="GRABAR" action="GrabarReservaLibro" actionListener="#{ReservaLibro.AgregarDatos}" type="submit" ajax="false" />
+                    </p>
+                </h:form>
+                <h:form>
+                    <p style="text-align: center">
+                        <p:commandButton value="RETROCEDER" action="ListaReservaLibro"/>
+                    </p>
+                </h:form>
+                <h:outputText value="#{ReservaLibro.mensaje}"/>
+            </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

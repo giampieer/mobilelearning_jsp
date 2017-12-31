@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"        
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Mantenimiento Profesor" footer="VrammDev" style="margin: auto; width: 1400px">
+                <center><h:outputText value="#{profesor.mensaje}"/></center>
+            <h:form>
+                <p style="text-align: center">
+                    <p:commandButton value="AGREGAR PROFESOR" action="GRABARPROFESOR"/>
+                </p>
+                <p:dataTable value="#{profesor.lista}" var="p">
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="ID"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.idprofesor}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Nombre"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.nombre}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Apellido"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.apellido}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Sexo"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.sexo}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Edad"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.edad}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Correo"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.correo}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Usuario"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.usuario}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           <h:outputText value="Clave"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{p.clave}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <p style="text-align: center">
+                            <h:commandButton value="Modificar " action="MODIFICARPROFESOR" actionListener="#{profesor.CargarProfesor}">
+                                <f:attribute name="idprofesor" value="#{p.idprofesor}"/>
+                            </h:commandButton>
+                        </p>
+                    </p:column>
+                    <p:column>
+                        <p style="text-align: center">
+                            <h:commandButton value="Eliminar " action="LISTADOPROFESOR" actionListener="#{profesor.EliminarProfesor}">
+                                <f:attribute name="idprofesor" value="#{p.idprofesor}"/>
+                            </h:commandButton>
+                        </p>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+          </p:panel>       
+        </center>
+    </ui:define>
+</ui:composition>

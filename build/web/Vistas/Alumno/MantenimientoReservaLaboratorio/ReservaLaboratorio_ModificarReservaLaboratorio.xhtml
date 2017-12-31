@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAlumno.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"  
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Modificar Reserva Laboratorio" footer="VrammDev" style="margin: auto; width: 580px">
+                <h:form>
+                    <h:panelGrid columns="3" style="margin: auto">
+                        <h:outputText value="Codigo:"/>
+                        <p:inputText value="#{ReservaLaboratorio.idReservaLaboratorio}" id="codigo" required="true" requiredMessage="Ingrese Codigo"/>
+                        <h:message for="codigo"/>
+                        <h:outputText value="Hora Inicio:"/>
+                        <p:inputText value="#{ReservaLaboratorio.horainicio}" id="hora_inicio" required="true" requiredMessage="Ingrese Hora de Inicio"/>
+                        <h:message for="hora_inicio"/>
+                        <h:outputText value="Hora Fin:"/>
+                        <p:inputText value="#{ReservaLaboratorio.horafin}" id="hora_fin" required="true" requiredMessage="Ingrese Hora de Fin"/>
+                        <h:message for="hora_fin"/>
+                        <h:outputText value="Alumno:"/>
+                        <p:selectOneMenu value="#{ReservaLaboratorio.idalumno}" id="alumno" required="true" requiredMessage="Seleccione Alumno">
+                                <f:selectItem itemLabel="seleccione"/>
+                                <f:selectItems value="#{alumno.listaItem}"/>
+                        </p:selectOneMenu>
+                        <h:message for="alumno"/>
+                        <h:outputText value="Laboratorio:"/>
+                        <p:selectOneMenu value="#{ReservaLaboratorio.idLaboratorio}" id="laboratorio" required="true" requiredMessage="Seleccione Actividad">
+                                <f:selectItem itemLabel="seleccione"/>
+                                <f:selectItems value="#{laboratorio.listaItem}"/>
+                        </p:selectOneMenu>
+                        <h:message for="laboratorio"/>
+
+                    </h:panelGrid>
+                    <p style="text-align: center">
+                        <p:commandButton value="MODIFICAR" action="ListaReservaLaboratorio" actionListener="#{ReservaLaboratorio.ModificarReservaLaboratorio}" type="submit" ajax="false" />
+                    </p>
+                </h:form>
+                <h:form>
+                    <p style="text-align: center">
+                        <p:commandButton value="RETROCEDER" action="ListaReservaLaboratorio"/>
+                    </p>
+                </h:form>
+                <h:outputText value="#{reservaactividad.mensaje}"/>
+            </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+
